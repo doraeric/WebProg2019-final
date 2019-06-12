@@ -1,0 +1,12 @@
+{
+    "search_server": {
+        "port": 8001
+    },
+    "api_server": {
+        "port": 8000
+    },
+    "inv_file": "input_data/inverted_file.json",
+    "news_url": "input_data/NC_1.csv",
+    "url2title": "input_data/url2title.json",
+    "url2content": "input_data/url2content.json"
+}

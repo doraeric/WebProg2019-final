@@ -1,0 +1,11 @@
+{
+  "name": "api_server",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "_vim_": { "modeline": "/* vim: set sw=2: */" }
+}

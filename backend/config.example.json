@@ -3,7 +3,10 @@
         "port": 8001
     },
     "api_server": {
-        "port": 8000
+        "port": 8000,
+        "corsOptions": {
+            "origin": "*"
+        }
     },
     "inv_file": "input_data/inverted_file.json",
     "news_url": "input_data/NC_1.csv",

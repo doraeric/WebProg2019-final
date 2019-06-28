@@ -6,9 +6,6 @@ import logo from "./logo.png";
 import './App.css'
 
 class App extends Component {
-  state={
-    history:[]
-  }
   render() {
     return (
       <Router>
@@ -17,7 +14,7 @@ class App extends Component {
             <a className="navbar-brand" href="http://cc.ee.ntu.edu.tw/~ric/" target="_blank" rel="noopener noreferrer">
               <img src={logo} width="30" height="30" alt="CodingTheSmartWay.com" />
             </a>
-            <Link to="/" className="navbar-brand">1e64 Searching engine</Link>
+            <Link to="/" className="navbar-brand" onClick={() => {if(window.location['href'].slice(-1)=="/"){window.location.reload()}}}>1e64 Searching engine</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">

@@ -57,7 +57,15 @@ tf-idf 有許多變形版，這裡採用的是 log，tf\_=1+log(tf), idf = log(N
 python 運算完獲得的結果會透過 socket 傳回 node api server，api server 再把結果傳回前端。
 
 ### 前端
-前端主要以 React 製作，使用了 bootstrap， TODO
+前端主要以React製作,分成search,history兩個頁面,兩個部分有用到bootstrap、fontawesome框架，
+search和history都會跟後端(deploy的網站)使用axios套件request搜尋結果和歷史紀錄資料
+
+#### search
+顯示搜尋結果部分有用promise來確保整個畫面render完之後才顯示搜尋時間、搜尋結果
+search的時候會擷取使用者userAgent並且用hash完之後的數字當成userid
+
+### history
+用使用者userAgent來向後端request資料。
 
 ## 使用的框架/模組/套件
 ### 後端
@@ -72,5 +80,5 @@ python 運算完獲得的結果會透過 socket 傳回 node api server，api ser
 
 ### 前端
 - bootstrap
-- 用了老師的 code ?
-- TODO
+- fontawesome
+- axios

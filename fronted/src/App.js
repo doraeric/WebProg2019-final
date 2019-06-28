@@ -20,11 +20,6 @@ class App extends Component {
             <Link to="/" className="navbar-brand">Searching engine</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
-                {
-                  //<li className="navbar-item">
-                  //  <Link to="/" className="nav-link">Todos</Link>
-                  //</li>
-                }
                 <li className="navbar-item">
                   <Link to="/history" className="nav-link">history</Link>
                 </li>
@@ -32,10 +27,7 @@ class App extends Component {
             </div>
           </nav>
           <br />
-          {
-            //<Route path="/" exact component={History} />
-          }
-          <Route path="/" exact component={Search} />
+          <Route path="/"  component={Search} />
           <Route path="/history" component={History} />
         </div>
       </Router>

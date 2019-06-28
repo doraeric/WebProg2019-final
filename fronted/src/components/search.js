@@ -14,6 +14,24 @@ function hash(s) {
   return hash;
 }
 
+function Result_prop(props) {
+  if (props[0] === true) {
+    return (
+      <div className="result_prop mb-5">
+        {props[1]} 項搜尋結果(搜尋時間約{props[2]}秒)
+      </div>
+    );
+  } else if (props[0] == null) {
+    return;
+  } else {
+    return (
+      <p className="result_prop mb-5">
+        找不到符合搜尋字詞「{props[3]}」的新聞。
+      </p>
+    );
+  }
+}
+
 export default class Search extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +39,9 @@ export default class Search extends Component {
       news: [],
       submit: false,
       user_query: "",
-      todo_completed: false
+      last_query: "",
+      result_prop: null,
+      query_time: 0
     };
   }
 
@@ -32,30 +52,37 @@ export default class Search extends Component {
   };
 
   onSubmit = e => {
-    //e.preventDefault();
     e.preventDefault();
+    const t0 = performance.now();
+    var last_query = this.state.user_query;
 
-
-    const test = {
-      news: [{ url: "", title: "", content: "" }]
-    };
     const that = this;
     var user_hash = hash(navigator.userAgent);
+
     axios
       .get(
         "http://linux4.csie.ntu.edu.tw:9487/" +
           user_hash +
           "/search?keyword=" +
-          this.state.user_query,
-        test
+          this.state.user_query
       )
-      .then(res => that.setState({ news: res.data.news }));
-
-    this.setState({
-      user_query: "",
-      todo_completed: false,
-      submit: true
-    });
+      .then(res => that.setState({ news: res.data.news }))
+      .then(() => {
+        const t1 = performance.now();
+        var result_prop;
+        if (this.state.news.length !== 0) {
+          result_prop = true;
+        } else {
+          result_prop = false;
+        }
+        this.setState({
+          user_query: "",
+          last_query: last_query,
+          submit: true,
+          query_time: ((t1 - t0) / 1000).toFixed(2),
+          result_prop: result_prop
+        });
+      });
   };
 
   render() {
@@ -63,7 +90,7 @@ export default class Search extends Component {
       <div style={{ marginTop: 10 }}>
         <h3 className="mb-5">keyword</h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group RNNXgb form-control mb-5">
+          <div className="form-group RNNXgb form-control">
             <label />
             <input
               type="text"
@@ -78,7 +105,12 @@ export default class Search extends Component {
               />
             </div>
           </div>
-
+          {Result_prop([
+            this.state.result_prop,
+            this.state.news.length,
+            this.state.query_time,
+            this.state.last_query
+          ])}
           <div className="container">
             {this.state.news.map((e, index) => {
               return (

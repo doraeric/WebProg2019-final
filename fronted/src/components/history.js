@@ -9,7 +9,7 @@ function hash(s) {
   for (i = 0; i < s.length; i++) {
     chr = s.charCodeAt(i);
     hash = (hash << 5) - hash + chr;
-    hash |= 0; // Convert to 32bit integer
+    hash |= 0; 
   }
   return hash;
 }
@@ -18,7 +18,6 @@ export default class History extends Component {
   constructor(props) {
     super(props);
     this.state = { title: [] };
-    // var user_hash=hash(navigator.userAgent)
   }
 
   componentDidMount() {
@@ -26,10 +25,7 @@ export default class History extends Component {
     var gethis_url =
       "http://linux4.csie.ntu.edu.tw:9487/" + user_hash + "/gethistory";
     const that = this;
-    axios.get(gethis_url).then(res =>
-      // console.log(res.data)
-      that.setState({ title: res.data })
-    );
+    axios.get(gethis_url).then(res => that.setState({ title: res.data }));
   }
 
   render() {
@@ -40,13 +36,13 @@ export default class History extends Component {
           <thead>
             <tr>
               <th>
-                Title <p style={{ opacity: 0.8 }}>(newest to latest)</p>
+                Title <p style={{ opacity: 0.8 }}>(newest to oldest)</p>
               </th>
             </tr>
           </thead>
           <tbody>
             {/* {console.log(this.state.title)} */}
-            {this.state.title.map((e,index) => {
+            {this.state.title.map((e, index) => {
               return (
                 <tr key={index}>
                   <td>{e}</td>

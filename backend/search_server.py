@@ -30,7 +30,7 @@ def handle_client(client_socket):
     request = decode(request, 'utf8')
     print("[*] Received: %s" % request)
 
-    docs = retrieval(request, invert_file)
+    docs = retrieval(request, invert_file, guess=False)
     urls = [news_url[int(i.split('_')[-1])-1] for i in docs]
     content = [url_content[i] for i in urls]
     title = [url_title[i] for i in urls]

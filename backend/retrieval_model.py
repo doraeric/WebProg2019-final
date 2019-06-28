@@ -18,7 +18,7 @@ def load_inv(fname):
         invert_file = json.load(f)
     return invert_file
 
-def retrieval(query, invert_file, num_corpus=100000, **kwargs):
+def retrieval(query, invert_file, num_corpus=100000, guess=True, **kwargs):
     # counting query term frequency
     query_cnt = Counter()
     query_words = list(jieba.cut(query))
@@ -47,10 +47,11 @@ def retrieval(query, invert_file, num_corpus=100000, **kwargs):
     if len(sorted_document_scores) >= 300:
         sorted_document_scores = [doc_score_tuple[0] for doc_score_tuple in sorted_document_scores[:300]]
     else: # if candidate documents less than 300, random sample some documents that are not in candidate list
-        documents_set  = set([doc_score_tuple[0] for doc_score_tuple in sorted_document_scores])
-        sample_pool = ['news_%06d'%news_id for news_id in range(1, num_corpus+1) if 'news_%06d'%news_id not in documents_set]
-        sample_ans = random.sample(sample_pool, 300-len(sorted_document_scores))
-        sorted_document_scores.extend([(i, 0) for i in sample_ans])
+        if guess:
+            documents_set  = set([doc_score_tuple[0] for doc_score_tuple in sorted_document_scores])
+            sample_pool = ['news_%06d'%news_id for news_id in range(1, num_corpus+1) if 'news_%06d'%news_id not in documents_set]
+            sample_ans = random.sample(sample_pool, 300-len(sorted_document_scores))
+            sorted_document_scores.extend([(i, 0) for i in sample_ans])
         sorted_document_scores = [doc_score_tuple[0] for doc_score_tuple in sorted_document_scores]
     return sorted_document_scores
 

@@ -27,7 +27,7 @@ class App extends Component {
             </div>
           </nav>
           <br />
-          <Route path="/"  component={Search} />
+          <Route path="/" exact  component={Search} />
           <Route path="/history" component={History} />
         </div>
       </Router>

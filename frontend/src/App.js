@@ -17,7 +17,7 @@ class App extends Component {
             <a className="navbar-brand" href="http://cc.ee.ntu.edu.tw/~ric/" target="_blank" rel="noopener noreferrer">
               <img src={logo} width="30" height="30" alt="CodingTheSmartWay.com" />
             </a>
-            <Link to="/" className="navbar-brand">Searching engine</Link>
+            <Link to="/" className="navbar-brand">1e64 Searching engine</Link>
             <div className="collpase navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">

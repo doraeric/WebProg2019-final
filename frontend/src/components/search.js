@@ -88,13 +88,14 @@ export default class Search extends Component {
   render() {
     return (
       <div style={{ marginTop: 10 }}>
-        <h3 className="mb-5">keyword</h3>
+        <h1 className="text-center">不可思議減恆河沙加阿僧祇</h1>
         <form onSubmit={this.onSubmit}>
           <div className="form-group RNNXgb form-control">
             <label />
             <input
               type="text"
               className="input"
+              placeholder="keyword"
               value={this.state.user_query}
               onChange={this.onChangeTodoDescription}
             />

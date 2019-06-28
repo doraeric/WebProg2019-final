@@ -76,7 +76,6 @@ export default class Search extends Component {
           result_prop = false;
         }
         this.setState({
-          user_query: "",
           last_query: last_query,
           submit: true,
           query_time: ((t1 - t0) / 1000).toFixed(2),

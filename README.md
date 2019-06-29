@@ -82,3 +82,15 @@ search的時候會擷取使用者userAgent並且用hash完之後的數字當成u
 - bootstrap
 - fontawesome
 - axios
+
+## Demo
+[![Demo Video](https://lh6.googleusercontent.com/YdHiyj8j-JKib1NR3oIdvmStaBbq4tjuwN5Ll0mMIWX-vMX5EZK3Z2W7GxMlAok6ASpNVqFH6PECcP4euRg=w1920-h1080-pd-k)](https://drive.google.com/file/d/1ia5JSq4Vbw_FkkJJhD2VJVP4Q5of2Xlr/view)
+
+## 專題製作心得
+### doraeric
+
+這次專題的發想是結合另一門課，網路資料探勘，所產生的。網路探勘是輸出文章id，計算準確度有多少。但只是這樣彷彿是個結束後就再也不會開啟的專案，似乎有點可惜，於是試著將它做成可以實際應用的形式，最終就生出了這個簡單的搜尋引擎了！這次在寫的時候必須讓不同的程式互相溝通，也要設計前後端溝通的api，覺得挺有趣的。前端得感謝另外兩位組員生出漂亮的網頁，就像真的搜尋引擎一樣！
+
+## 每位組員之貢獻
+### doraeric
+後端，backend 資料夾中的東西，包含搜尋計算、python server, node api server。
